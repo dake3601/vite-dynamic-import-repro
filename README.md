@@ -12,9 +12,11 @@ const strings = await import(/* strings */ `./translations/${locale}/strings.jso
 const strings = await import(`./translations/${locale}/strings.json`);
 ```
 
+These comments are harmless in Vite 7 (Rollup and Rolldown) but break dynamic import resolution in Vite 8 (Rolldown).
+
 ## Expected behavior
 
-Both forms should produce identical output: a `_rolldown_dynamic_import_helper_default` call with a static `Object.assign` map containing all files matching `./translations/*/strings.json`.
+Both forms should produce identical output.
 
 ## Reproduce
 
@@ -28,6 +30,3 @@ Inspect `dist/assets/index-*.js`:
 - **With comment**: the `import()` passes through untransformed — no translation chunks are emitted.
 - **Without comment**: `dynamicImportVarsPlugin` produces the expected static map and separate chunks for each translation file.
 
-## Impact
-
-Libraries compiled by TypeScript/SWC often preserve `/* webpackChunkName: "..." */` comments in their output. These are harmless in Vite 7 (Rollup and Rolldown) but break dynamic import resolution in Vite 8 (Rolldown).
