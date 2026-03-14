@@ -22,7 +22,7 @@ Both forms should produce identical output.
 
 ```bash
 npm install
-npx vite build
+npm run build
 ```
 
 Inspect `dist/assets/index-*.js`:
