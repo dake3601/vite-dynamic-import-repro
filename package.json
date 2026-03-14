@@ -1,0 +1,11 @@
+{
+  "name": "vite-dynamic-import-repro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^8.0.0"
+  }
+}
